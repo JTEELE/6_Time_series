@@ -4,7 +4,7 @@
 <img src="Images/venus.jfif" align="center" width="200px"/>
 <br clear="center"/>
 
-<img src="Images/results.png" align="right" width="500px"/>
+<img src="Images/results.png" align="right" width="385px"/>
 
 #
 
