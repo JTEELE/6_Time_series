@@ -20,8 +20,12 @@
 >## What is Time Series Analysis?
 > [Data Science](https://medium.com/swlh/time-series-analysis-7006ea1c3326): Time series forecasting is a method of using a model to predict future values based on previously observed time series values.
 
+<img src="Images/results2.png" align="right" width="385px"/>
+
+#
+
 >
-<img src="Images/TV.png" align="right" width="200px"/>
+<img src="Images/TV.png" align="right" width="400px"/>
 <br clear="center"/>
 
 #
