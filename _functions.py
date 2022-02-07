@@ -15,3 +15,12 @@ def train_test(time_series):
     Y_train = train.Returns.dropna()
     Y_test = test.Returns.dropna()
     return X_train, X_test, Y_train, Y_test
+
+
+def rmse(Results):
+    mse = mean_squared_error(
+        Results['Returns'],
+        Results['Predicted_return'])
+    out_of_sample_rmse = np.sqrt(mse)
+    print(f'Out of sample root mean squared error is {out_of_sample_rmse}')
+    return out_of_sample_rmse
