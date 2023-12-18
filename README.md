@@ -9,9 +9,7 @@
 #
 
 >### Overview: 
->> This script will *leverage* Time Series Forecasting & Linear Regression Modeling to *predict* future price movements
-
->> No fancy imports for this time series analysis as this script utilizes basic core python libraries (e.g. numpy, pandas & plotly)
+>> Time Series Forecasting & Linear Regression Modeling to *predict* future price movements
 
 <img src="Images/Bot.jfif" align="right" width="300px"/>
 <br clear="center"/>
@@ -33,9 +31,6 @@
 #
 
 ## Resources:
-1. Northwestern NPS:
-https://sps.northwestern.edu/
-
-2. Time Series (Medium):
+1. Time Series (Medium):
 https://medium.com/swlh/time-series-analysis-7006ea1c3326.
 
