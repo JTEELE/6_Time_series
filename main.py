@@ -2,21 +2,30 @@
 # LSTM - Multivariate Stock Price Prediction
 import pandas as pd
 import numpy as np
+import pytz
 import math
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense, Dropout
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 from keras.models import load_model
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+from datetime import datetime as dt, timedelta as td
 
 def load_and_preprocess_data(data_path):
     df = pd.read_csv(data_path)
     df.dropna(inplace=True)
     df.rename(columns = {'time':'DATE'}, inplace = True)   
-    df[df.columns[0]] = pd.to_datetime(df[df.columns[0]]).dt.strftime("%Y%m%d")  # sn.heatmap(df.corr()), df.set_index('DATE', inplace=True)
+    convert_to_date = lambda s: dt.fromisoformat(s).astimezone(pytz.utc).date()
+    try:
+        df[df.columns[0]] = df[df.columns[0]].apply(convert_to_date)
+    except:
+        pass
+    df[df.columns[0]] = pd.to_datetime(df[df.columns[0]])
+    df[df.columns[0]] = df[df.columns[0]].dt.strftime("%Y%m%d") # sn.heatmap(df.corr()), df.set_index('DATE', inplace=True)
+
     test_sample_size = int(df.shape[0]*.0057)
     return df, test_sample_size
 
@@ -68,7 +77,8 @@ def evaluate_model(y_true, y_pred):
 
 # Main Function
 if __name__ == '__main__':
-    data_path = 'Data/Electricity+Consumption.csv'#'Data/LTCUSD.csv'
+    data_path = "Data\Electricity+Consumption.csv"#'Data/LTCUSD.csv'
+    # data_path = "Data\COINBASE_LTCUSD, 1D_beed4.csv"#'Data/LTCUSD.csv'
     window_size = 24
     epochs = 80 #100
     batch_size = 32 #32
@@ -102,7 +112,7 @@ if __name__ == '__main__':
     y_Scale = training_set[:,2:3]
     SI.fit_transform(y_Scale)
     predictions = SI.inverse_transform(prediction_test)
-    real_values = test_set[:, 2]
+    real_values = test_set[:, 2] #Problem child
     plt.plot(real_values, color = 'red', label = 'Actual Electrical Consumption')
     plt.plot(predictions, color = 'blue', label = 'Predicted Values')
     plt.title('Electrical Consumption Prediction')

@@ -3,8 +3,6 @@ print("""
       ## Multiple Linear Regression
 """)
 
-
-
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
@@ -27,8 +25,6 @@ y_pred = model.predict(X_test)
 # Calculating mean squared error
 mse = mean_squared_error(y_test, y_pred)
 print(f"Mean Squared Error: {mse}")
-
-
 
 print("""
 ## Polynomial Regression
@@ -69,8 +65,6 @@ plt.xlabel('Temperature')
 plt.ylabel('Sales')
 plt.legend()
 plt.show()
-
-
 print("""
 ## Support Vector Regression
 """)
