@@ -16,9 +16,11 @@
 *.pyc
 *.env
 *.txt
+*.h5
 *.pbix
 *.ipynb
 *.db
+*.pb
 *.xls
 *.pbix
 *.accdb
